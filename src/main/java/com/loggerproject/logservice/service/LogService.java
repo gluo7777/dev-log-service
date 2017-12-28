@@ -18,6 +18,12 @@ public class LogService {
         return logRepository.findOne(logID);
     }
 
+    /**
+     * 
+     * @param paths
+     * @param tags
+     * @return id of log model created
+     */
     public String create(List<String> paths, List<String> tags) {
         LogModel logModel = new LogModel();
 
@@ -31,4 +37,19 @@ public class LogService {
 
         return logModel.getId();
     }
+    
+    public void delete(String id) {
+    	logRepository.delete(id);
+    }
+    
+    public LogModel update(LogModel model) {
+    	LogModel old = logRepository.findOne(model.getId());
+    	old.setPathIDs(model.getPathIDs());
+    	old.setTagIDs(model.getTagIDs());
+    	logRepository.save(old);
+    	return old;
+    }
 }
+
+
+
