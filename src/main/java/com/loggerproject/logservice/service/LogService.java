@@ -43,11 +43,14 @@ public class LogService {
     }
     
     public LogModel update(LogModel model) {
-    	LogModel old = logRepository.findOne(model.getId());
-    	old.setPathIDs(model.getPathIDs());
-    	old.setTagIDs(model.getTagIDs());
-    	logRepository.save(old);
-    	return old;
+    	LogModel logModel = logRepository.findOne(model.getId());
+
+    	logModel.setPathIDs(model.getPathIDs());
+    	logModel.setTagIDs(model.getTagIDs());
+
+    	logRepository.save(logModel);
+
+    	return logModel;
     }
 }
 

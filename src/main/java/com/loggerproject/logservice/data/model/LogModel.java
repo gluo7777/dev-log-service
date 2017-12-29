@@ -8,10 +8,10 @@ import java.util.List;
 
 @Data
 @Document(collection = "log")
-public class LogModel {
-
+public class LogModel extends com.loggerproject.globalresource.service.log.pojo.model.LogModel {
     @Id
-    String id;
-    List<String> pathIDs;
-    List<String> tagIDs;
+    @Override
+    public void setId(String id) {
+        super.setId(id);
+    }
 }
