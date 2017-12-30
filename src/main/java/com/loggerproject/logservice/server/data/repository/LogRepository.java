@@ -1,6 +1,6 @@
-package com.loggerproject.logservice.data.repository;
+package com.loggerproject.logservice.server.data.repository;
 
-import com.loggerproject.logservice.data.model.LogModel;
+import com.loggerproject.logservice.server.data.model.LogModel;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

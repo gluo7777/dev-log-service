@@ -1,4 +1,4 @@
-package com.loggerproject.logservice.data.model;
+package com.loggerproject.logservice.server.data.model;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -9,9 +9,8 @@ import java.util.List;
 @Data
 @Document(collection = "log")
 public class LogModel {
-
     @Id
     String id;
-    List<String> pathIDs;
+    List<String> directoryIDs;
     List<String> tagIDs;
 }

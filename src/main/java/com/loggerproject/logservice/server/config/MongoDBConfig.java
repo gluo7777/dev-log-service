@@ -1,4 +1,4 @@
-package com.loggerproject.logservice.config;
+package com.loggerproject.logservice.server.config;
 
 import com.mongodb.MongoClient;
 import org.springframework.beans.factory.annotation.Value;
