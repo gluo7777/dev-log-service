@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
 @Configuration
-@ComponentScan(basePackages = {"com.loggerproject.globalresource.microservice.log.annotation.client.component"})
+@ComponentScan(basePackages = {"com.loggerproject.logservice.client.service"})
 @RibbonClient(name="log-service", configuration = LogServiceClientRibbonConfiguration.class)
 public class LogServiceClientConfiguration {
 
