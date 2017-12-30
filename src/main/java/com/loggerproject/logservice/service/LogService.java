@@ -14,43 +14,36 @@ public class LogService {
     @Autowired
     LogRepository logRepository;
 
-    public LogModel findOne(String logID) {
-        return logRepository.findOne(logID);
-    }
-
-    /**
-     * 
-     * @param paths
-     * @param tags
-     * @return id of log model created
-     */
-    public String create(List<String> paths, List<String> tags) {
-        LogModel logModel = new LogModel();
-
-        paths = paths == null ? new ArrayList<>() : paths;
-        tags  = tags  == null ? new ArrayList<>() : tags;
-
-        logModel.setPathIDs(paths);
-        logModel.setTagIDs(tags);
+    public LogModel create(LogModel logModel) {
+        logModel.setId(null);
+        logModel.setDirectoryIDs(logModel.getDirectoryIDs() == null ? new ArrayList<>() : logModel.getDirectoryIDs());
+        logModel.setTagIDs(logModel.getTagIDs()  == null ? new ArrayList<>() : logModel.getTagIDs());
 
         logRepository.save(logModel);
 
-        return logModel.getId();
+        return logModel;
     }
-    
-    public void delete(String id) {
-    	logRepository.delete(id);
-    }
-    
+
     public LogModel update(LogModel model) {
-    	LogModel logModel = logRepository.findOne(model.getId());
+        LogModel logModel = logRepository.findOne(model.getId());
 
-    	logModel.setPathIDs(model.getPathIDs());
-    	logModel.setTagIDs(model.getTagIDs());
+        logModel.setDirectoryIDs(logModel.getDirectoryIDs() == null ? new ArrayList<>() : logModel.getDirectoryIDs());
+        logModel.setTagIDs(logModel.getTagIDs()  == null ? new ArrayList<>() : logModel.getTagIDs());
 
-    	logRepository.save(logModel);
+        logRepository.save(logModel);
 
-    	return logModel;
+        return logModel;
+    }
+
+    public LogModel getFindOne(String logID) {
+        return logRepository.findOne(logID);
+    }
+
+    public LogModel delete(String logID) {
+        LogModel logmodel = getFindOne(logID);
+    	logRepository.delete(logID);
+
+        return logmodel;
     }
 }
 
