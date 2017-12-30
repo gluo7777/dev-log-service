@@ -12,8 +12,9 @@ import com.loggerproject.logservice.controller.api.model.get.ResponseSuccessGetL
 import com.loggerproject.logservice.controller.api.model.update.RequestUpdateLogModel;
 import com.loggerproject.logservice.controller.api.model.update.ResponseErrorUpdateLogModel;
 import com.loggerproject.logservice.controller.api.model.update.ResponseSuccessUpdateLogModel;
-import com.loggerproject.logservice.data.model.LogModel;
-import com.loggerproject.logservice.service.LogService;
+import com.loggerproject.logservice.server.data.model.LogModel;
+import com.loggerproject.logservice.server.LogService;
+import com.loggerproject.logservice.server.service.LogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

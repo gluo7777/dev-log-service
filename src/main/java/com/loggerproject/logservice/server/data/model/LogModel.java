@@ -1,4 +1,4 @@
-package com.loggerproject.logservice.data.model;
+package com.loggerproject.logservice.server.data.model;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;

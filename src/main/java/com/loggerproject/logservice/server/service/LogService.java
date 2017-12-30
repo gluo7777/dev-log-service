@@ -1,12 +1,11 @@
-package com.loggerproject.logservice.service;
+package com.loggerproject.logservice.server.service;
 
-import com.loggerproject.logservice.data.model.LogModel;
-import com.loggerproject.logservice.data.repository.LogRepository;
+import com.loggerproject.logservice.server.data.model.LogModel;
+import com.loggerproject.logservice.server.data.repository.LogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class LogService {
