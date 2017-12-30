@@ -1,4 +1,4 @@
-package com.loggerproject.logservice.controller.api.model.create;
+package com.loggerproject.logservice.server.controller.api.model.create;
 
 import com.loggerproject.globalresource.pojo.controller.request.sub.RequestCreateModel;
 import com.loggerproject.logservice.server.data.model.LogModel;

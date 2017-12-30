@@ -1,4 +1,4 @@
-package com.loggerproject.logservice.controller.api.model.delete;
+package com.loggerproject.logservice.server.controller.api.model.delete;
 
 import com.loggerproject.globalresource.pojo.controller.response.sub.success.sub.ResponseSuccessDeleteModel;
 import com.loggerproject.logservice.server.data.model.LogModel;

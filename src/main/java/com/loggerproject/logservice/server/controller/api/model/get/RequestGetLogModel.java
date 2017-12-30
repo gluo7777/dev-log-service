@@ -1,4 +1,4 @@
-package com.loggerproject.logservice.controller.api.model.get;
+package com.loggerproject.logservice.server.controller.api.model.get;
 
 import com.loggerproject.globalresource.pojo.controller.request.sub.RequestGetModel;
 import lombok.Data;

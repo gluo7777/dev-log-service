@@ -1,4 +1,4 @@
-package com.loggerproject.logservice.controller.api.model.get;
+package com.loggerproject.logservice.server.controller.api.model.get;
 
 import com.loggerproject.globalresource.pojo.controller.response.sub.success.sub.ResponseSuccessGetModel;
 import com.loggerproject.logservice.server.data.model.LogModel;
