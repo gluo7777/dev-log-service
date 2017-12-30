@@ -1,6 +1,6 @@
 package com.loggerproject.logservice.server.controller.api;
 
-import com.loggerproject.globalresource.pojo.controller.response.ResponseModel;
+import com.loggerproject.microserviceglobalresource.pojo.controller.response.ResponseModel;
 import com.loggerproject.logservice.server.controller.api.model.create.RequestCreateLogModel;
 import com.loggerproject.logservice.server.controller.api.model.create.ResponseErrorCreateLogModel;
 import com.loggerproject.logservice.server.controller.api.model.create.ResponseSuccessCreateLogModel;
