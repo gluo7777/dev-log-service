@@ -6,6 +6,6 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class RequestDeleteLogModel extends RequestDeleteModel {
+public class RequestDeleteLogModels extends RequestDeleteModel {
     List<String> ids;
 }

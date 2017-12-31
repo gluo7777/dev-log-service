@@ -7,6 +7,6 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class ResponseUpdateLogModel extends ResponseUpdateModel {
+public class ResponseUpdateLogModels extends ResponseUpdateModel {
     List<LogModel> updatedModels;
 }
