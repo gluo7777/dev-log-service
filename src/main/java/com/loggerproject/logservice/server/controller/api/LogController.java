@@ -1,17 +1,14 @@
 package com.loggerproject.logservice.server.controller.api;
 
+import com.loggerproject.logservice.server.controller.api.model.get.ResponseGetLogModel;
 import com.loggerproject.microserviceglobalresource.pojo.controller.response.ResponseModel;
 import com.loggerproject.logservice.server.controller.api.model.create.RequestCreateLogModel;
-import com.loggerproject.logservice.server.controller.api.model.create.ResponseErrorCreateLogModel;
-import com.loggerproject.logservice.server.controller.api.model.create.ResponseSuccessCreateLogModel;
+import com.loggerproject.logservice.server.controller.api.model.create.ResponseCreateLogModel;
 import com.loggerproject.logservice.server.controller.api.model.delete.RequestDeleteLogModel;
-import com.loggerproject.logservice.server.controller.api.model.delete.ResponseErrorDeleteLogModel;
-import com.loggerproject.logservice.server.controller.api.model.delete.ResponseSuccessDeleteLogModel;
+import com.loggerproject.logservice.server.controller.api.model.delete.ResponseDeleteLogModel;
 import com.loggerproject.logservice.server.controller.api.model.get.RequestGetLogModel;
-import com.loggerproject.logservice.server.controller.api.model.get.ResponseSuccessGetLogModel;
 import com.loggerproject.logservice.server.controller.api.model.update.RequestUpdateLogModel;
-import com.loggerproject.logservice.server.controller.api.model.update.ResponseErrorUpdateLogModel;
-import com.loggerproject.logservice.server.controller.api.model.update.ResponseSuccessUpdateLogModel;
+import com.loggerproject.logservice.server.controller.api.model.update.ResponseUpdateLogModel;
 import com.loggerproject.logservice.server.data.model.LogModel;
 import com.loggerproject.logservice.server.service.LogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,61 +26,58 @@ public class LogController {
 
 	@PostMapping(value = "/create", produces = "application/json")
 	public ResponseModel createLogs(@RequestBody RequestCreateLogModel request) {
+		ResponseCreateLogModel response = new ResponseCreateLogModel();
+
 		try {
 			List<LogModel> createdLogModels = request.getLogModels().stream().map(logModel -> logService.create(logModel)).collect(Collectors.toList());
-
-			ResponseSuccessCreateLogModel successResponse = new ResponseSuccessCreateLogModel();
-			successResponse.setCreatedLogModel(createdLogModels);
-			return successResponse;
+			response.setCreatedLogModels(createdLogModels);
 		} catch (Exception e) {
-			ResponseErrorCreateLogModel errorResponse = new ResponseErrorCreateLogModel();
-			errorResponse.setErrorMessage(e.getMessage());
-			return errorResponse;
+			response.setErrorMessage(e.getMessage());
 		}
+
+		return response;
 	}
 
 	@PostMapping(value = "/update", produces = "application/json")
 	public ResponseModel updateLogs(@RequestBody RequestUpdateLogModel request) {
+		ResponseUpdateLogModel response = new ResponseUpdateLogModel();
+		
 		try {
 			List<LogModel> updatedLogModels = request.getLogModels().stream().map(logModel -> logService.update(logModel)).collect(Collectors.toList());
-
-			ResponseSuccessUpdateLogModel successResponse = new ResponseSuccessUpdateLogModel();
-			successResponse.setUpdatedLogModels(updatedLogModels);
-			return successResponse;
+			response.setUpdatedLogModels(updatedLogModels);
 		} catch (Exception e) {
-			ResponseErrorUpdateLogModel errorResponse = new ResponseErrorUpdateLogModel();
-			errorResponse.setErrorMessage(e.getMessage());
-			return errorResponse;
+			response.setErrorMessage(e.getMessage());
 		}
+
+		return response;
 	}
 
 	@PostMapping(value = "/get", produces = "application/json")
 	public ResponseModel getLogs(@RequestBody RequestGetLogModel request) {
+		ResponseGetLogModel response = new ResponseGetLogModel();
+
 		try {
 			List<LogModel> logModels = request.getLogIDs().stream().map(logModelID -> logService.getFindOne(logModelID)).collect(Collectors.toList());
-
-			ResponseSuccessGetLogModel successResponse = new ResponseSuccessGetLogModel();
-			successResponse.setLogModels(logModels);
-			return successResponse;
+			response.setLogModels(logModels);
 		} catch (Exception e) {
-			ResponseErrorUpdateLogModel errorResponse = new ResponseErrorUpdateLogModel();
-			errorResponse.setErrorMessage(e.getMessage());
-			return errorResponse;
+			response.setErrorMessage(e.getMessage());
 		}
+
+		return response;
 	}
 
 	@PostMapping(value = "/delete", produces = "application/json")
 	public ResponseModel deleteLogs(@RequestBody RequestDeleteLogModel request) {
+		ResponseDeleteLogModel response = new ResponseDeleteLogModel();
+
 		try {
 			List<LogModel> deletedLogModels = request.getLogIDs().stream().map(logModelID -> logService.delete(logModelID)).collect(Collectors.toList());
-
-			ResponseSuccessDeleteLogModel successResponse = new ResponseSuccessDeleteLogModel();
-			successResponse.setDeletedLogModels(deletedLogModels);
-			return successResponse;
+			response.setDeletedLogModels(deletedLogModels);
 		} catch (Exception e) {
-			ResponseErrorDeleteLogModel errorResponse = new ResponseErrorDeleteLogModel();
-			errorResponse.setErrorMessage(e.getMessage());
-			return errorResponse;
+			response.setErrorMessage(e.getMessage());
 		}
+
+		return response;
+
 	}
 }
