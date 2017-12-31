@@ -25,56 +25,64 @@ public class LogControllerAPI {
 	LogService logService;
 
 	@PostMapping(value = "/create", produces = "application/json")
-	public ResponseModel createLogs(@RequestBody RequestCreateLogModel request) {
+	public ResponseModel create(@RequestBody RequestCreateLogModel request) {
 		ResponseCreateLogModel response = new ResponseCreateLogModel();
 
 		try {
 			List<LogModel> createdModels = request.getModels().stream().map(model -> logService.create(model)).collect(Collectors.toList());
 			response.setCreatedModels(createdModels);
+			response.setSuccess(true);
 		} catch (Exception e) {
 			response.setErrorMessage(e.getMessage());
+			response.setSuccess(false);
 		}
 
 		return response;
 	}
 
 	@PostMapping(value = "/update", produces = "application/json")
-	public ResponseModel updateLogs(@RequestBody RequestUpdateLogModel request) {
+	public ResponseModel update(@RequestBody RequestUpdateLogModel request) {
 		ResponseUpdateLogModel response = new ResponseUpdateLogModel();
 		
 		try {
 			List<LogModel> updatedModels = request.getModels().stream().map(model -> logService.update(model)).collect(Collectors.toList());
 			response.setUpdatedModels(updatedModels);
+			response.setSuccess(true);
 		} catch (Exception e) {
 			response.setErrorMessage(e.getMessage());
+			response.setSuccess(false);
 		}
 
 		return response;
 	}
 
 	@PostMapping(value = "/get", produces = "application/json")
-	public ResponseModel getLogs(@RequestBody RequestGetLogModel request) {
+	public ResponseModel get(@RequestBody RequestGetLogModel request) {
 		ResponseGetLogModel response = new ResponseGetLogModel();
 
 		try {
 			List<LogModel> models = request.getIds().stream().map(modelID -> logService.getFindOne(modelID)).collect(Collectors.toList());
 			response.setModels(models);
+			response.setSuccess(true);
 		} catch (Exception e) {
 			response.setErrorMessage(e.getMessage());
+			response.setSuccess(false);
 		}
 
 		return response;
 	}
 
 	@PostMapping(value = "/delete", produces = "application/json")
-	public ResponseModel deleteLogs(@RequestBody RequestDeleteLogModel request) {
+	public ResponseModel delete(@RequestBody RequestDeleteLogModel request) {
 		ResponseDeleteLogModel response = new ResponseDeleteLogModel();
 
 		try {
 			List<LogModel> deletedModels = request.getIds().stream().map(modelID -> logService.delete(modelID)).collect(Collectors.toList());
 			response.setDeletedModels(deletedModels);
+			response.setSuccess(true);
 		} catch (Exception e) {
 			response.setErrorMessage(e.getMessage());
+			response.setSuccess(false);
 		}
 
 		return response;
