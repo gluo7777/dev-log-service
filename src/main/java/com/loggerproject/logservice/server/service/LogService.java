@@ -13,23 +13,29 @@ public class LogService {
     @Autowired
     LogRepository logRepository;
 
-    public LogModel create(LogModel model) {
-        model.setId(null);
+    private LogModel scrubModel(LogModel model) {
         model.setDirectoryIDs(model.getDirectoryIDs() == null ? new ArrayList<>() : model.getDirectoryIDs());
-        model.setTagIDs(model.getTagIDs()  == null ? new ArrayList<>() : model.getTagIDs());
+        model.setTagIDs(model.getTagIDs() == null ? new ArrayList<>() : model.getTagIDs());
+        return model;
+    }
 
+    public LogModel create(LogModel model) {
+        model = scrubModel(model);
+        model.setId(null);
         logRepository.save(model);
 
         return model;
     }
 
     public LogModel update(LogModel model) {
+        model = scrubModel(model);
+
         LogModel oldModel = logRepository.findOne(model.getId());
-
-        oldModel.setDirectoryIDs(model.getDirectoryIDs() == null ? new ArrayList<>() : model.getDirectoryIDs());
-        oldModel.setTagIDs(model.getTagIDs()  == null ? new ArrayList<>() : model.getTagIDs());
-
-        logRepository.save(oldModel);
+        if (oldModel != null) {
+            oldModel.setDirectoryIDs(model.getDirectoryIDs());
+            oldModel.setTagIDs(model.getTagIDs());
+            logRepository.save(oldModel);
+        }
 
         return oldModel;
     }
@@ -39,10 +45,10 @@ public class LogService {
     }
 
     public LogModel delete(String id) {
-        LogModel logmodel = getFindOne(id);
+        LogModel model = getFindOne(id);
     	logRepository.delete(id);
 
-        return logmodel;
+        return model;
     }
 }
 
