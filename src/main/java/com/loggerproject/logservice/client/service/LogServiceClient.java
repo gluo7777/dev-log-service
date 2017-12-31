@@ -18,19 +18,21 @@ public class LogServiceClient {
     @Autowired
     RestTemplate restTemplate;
 
+    private static final String END_POINT = "http://LOG-SERVICE";
+
     public ResponseCreateLogModels create(RequestCreateLogModels request) {
-        return restTemplate.postForObject("http://LOG-SERVICE/api/create", request, ResponseCreateLogModels.class);
+        return restTemplate.postForObject(END_POINT + "/api/create", request, ResponseCreateLogModels.class);
     }
 
     public ResponseUpdateLogModels update(RequestUpdateLogModels request) {
-        return restTemplate.postForObject("http://LOG-SERVICE/api/update", request, ResponseUpdateLogModels.class);
+        return restTemplate.postForObject(END_POINT + "/api/update", request, ResponseUpdateLogModels.class);
     }
 
     public ResponseGetLogModels get(RequestGetLogModels request) {
-        return restTemplate.postForObject("http://LOG-SERVICE/api/get", request, ResponseGetLogModels.class);
+        return restTemplate.postForObject(END_POINT + "/api/get", request, ResponseGetLogModels.class);
     }
 
     public ResponseDeleteLogModels delete(RequestDeleteLogModels request) {
-        return restTemplate.postForObject("http://LOG-SERVICE/api/delete", request, ResponseDeleteLogModels.class);
+        return restTemplate.postForObject(END_POINT + "/api/delete", request, ResponseDeleteLogModels.class);
     }
 }
