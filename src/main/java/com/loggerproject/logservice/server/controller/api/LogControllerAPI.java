@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("api")
-public class LogController {
+public class LogControllerAPI {
 
 	@Autowired
 	LogService logService;
