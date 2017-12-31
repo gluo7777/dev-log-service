@@ -8,5 +8,5 @@ import java.util.List;
 
 @Data
 public class ResponseDeleteLogModel extends ResponseDeleteModel {
-    List<LogModel> deletedLogModels;
+    List<LogModel> deletedModels;
 }

@@ -8,5 +8,5 @@ import java.util.List;
 
 @Data
 public class RequestCreateLogModel extends RequestCreateModel {
-    List<LogModel> logModels;
+    List<LogModel> models;
 }

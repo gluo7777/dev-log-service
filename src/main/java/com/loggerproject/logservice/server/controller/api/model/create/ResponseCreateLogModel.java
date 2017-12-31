@@ -8,5 +8,5 @@ import java.util.List;
 
 @Data
 public class ResponseCreateLogModel extends ResponseCreateModel {
-    List<LogModel> createdLogModels;
+    List<LogModel> createdModels;
 }

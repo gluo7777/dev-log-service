@@ -7,5 +7,5 @@ import java.util.List;
 
 @Data
 public class RequestGetLogModel extends RequestGetModel {
-    List<String> logIDs;
+    List<String> ids;
 }

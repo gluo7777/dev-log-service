@@ -29,8 +29,8 @@ public class LogControllerAPI {
 		ResponseCreateLogModel response = new ResponseCreateLogModel();
 
 		try {
-			List<LogModel> createdLogModels = request.getLogModels().stream().map(logModel -> logService.create(logModel)).collect(Collectors.toList());
-			response.setCreatedLogModels(createdLogModels);
+			List<LogModel> createdModels = request.getModels().stream().map(model -> logService.create(model)).collect(Collectors.toList());
+			response.setCreatedModels(createdModels);
 		} catch (Exception e) {
 			response.setErrorMessage(e.getMessage());
 		}
@@ -43,8 +43,8 @@ public class LogControllerAPI {
 		ResponseUpdateLogModel response = new ResponseUpdateLogModel();
 		
 		try {
-			List<LogModel> updatedLogModels = request.getLogModels().stream().map(logModel -> logService.update(logModel)).collect(Collectors.toList());
-			response.setUpdatedLogModels(updatedLogModels);
+			List<LogModel> updatedModels = request.getModels().stream().map(model -> logService.update(model)).collect(Collectors.toList());
+			response.setUpdatedModels(updatedModels);
 		} catch (Exception e) {
 			response.setErrorMessage(e.getMessage());
 		}
@@ -57,8 +57,8 @@ public class LogControllerAPI {
 		ResponseGetLogModel response = new ResponseGetLogModel();
 
 		try {
-			List<LogModel> logModels = request.getLogIDs().stream().map(logModelID -> logService.getFindOne(logModelID)).collect(Collectors.toList());
-			response.setLogModels(logModels);
+			List<LogModel> models = request.getIds().stream().map(modelID -> logService.getFindOne(modelID)).collect(Collectors.toList());
+			response.setModels(models);
 		} catch (Exception e) {
 			response.setErrorMessage(e.getMessage());
 		}
@@ -71,13 +71,12 @@ public class LogControllerAPI {
 		ResponseDeleteLogModel response = new ResponseDeleteLogModel();
 
 		try {
-			List<LogModel> deletedLogModels = request.getLogIDs().stream().map(logModelID -> logService.delete(logModelID)).collect(Collectors.toList());
-			response.setDeletedLogModels(deletedLogModels);
+			List<LogModel> deletedModels = request.getIds().stream().map(modelID -> logService.delete(modelID)).collect(Collectors.toList());
+			response.setDeletedModels(deletedModels);
 		} catch (Exception e) {
 			response.setErrorMessage(e.getMessage());
 		}
 
 		return response;
-
 	}
 }

@@ -8,5 +8,5 @@ import java.util.List;
 
 @Data
 public class ResponseUpdateLogModel extends ResponseUpdateModel {
-    List<LogModel> updatedLogModels;
+    List<LogModel> updatedModels;
 }
