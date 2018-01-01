@@ -19,8 +19,18 @@ public class LogService {
         return model;
     }
 
-    public LogModel create(LogModel model) {
+    private void validateModel(LogModel model) {
+        // TODO validate model and throw exceptions if needed
+    }
+
+    private LogModel scrubAndValidate(LogModel model) {
         model = scrubModel(model);
+        validateModel(model);
+        return model;
+    }
+
+    public LogModel create(LogModel model) {
+        model = scrubAndValidate(model);
         model.setId(null);
         logRepository.save(model);
 
@@ -28,7 +38,7 @@ public class LogService {
     }
 
     public LogModel update(LogModel model) {
-        model = scrubModel(model);
+        model = scrubAndValidate(model);
 
         LogModel oldModel = logRepository.findOne(model.getId());
         if (oldModel != null) {
